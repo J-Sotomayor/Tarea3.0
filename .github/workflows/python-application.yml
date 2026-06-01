@@ -50,8 +50,8 @@ jobs:
 
       - name: Construir imagen Docker
         run: |
-          docker build -t ghcr.io/j-sotomayor/ejercicio:3.0.0 .
+          docker build -t ghcr.io/J-sotomayor/ejercicio:3.0.0 .
 
       - name: Publicar imagen
         run: |
-          docker push ghcr.io/j-sotomayor/ejercicio:3.0.0
+          docker push ghcr.io/J-sotomayor/ejercicio:3.0.0
