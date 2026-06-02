@@ -1,0 +1,43 @@
+
+version: '3.9'
+
+services:
+  dbclases:
+    image: postgres:15-alpine
+    container_name: dbclases
+    restart: unless-stopped
+    environment:
+      TZ: America/Guayaquil
+      POSTGRES_DB: ejemplo1
+      POSTGRES_USER: quinto
+      POSTGRES_PASSWORD: 123
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pg_dbclase:/var/lib/postgresql/data/pgdata
+    networks:
+      - net_dbclase
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bm@wasa.edu.ec
+      PGADMIN_DEFAULT_PASSWORD: 1234
+    volumes:
+      - pg_pgadmin:/var/lib/pgadmin
+    networks:
+      - net_dbclase
+    ports:
+      - "8080:80"
+
+volumes:
+  pg_dbclase:
+  pg_pgadmin:
+
+networks:
+  net_dbclase:
+    driver: bridge
+    
